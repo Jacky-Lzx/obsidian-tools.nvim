@@ -1,0 +1,29 @@
+*obsidian-tools.txt*  Native vault workflows
+
+SETUP                                                   *obsidian-tools-setup*
+  require('obsidian_tools').setup({
+    workspaces = { { name = 'Notes', path = '~/Notes' } },
+  })
+Requires markdown-tools.nvim on runtimepath. No default physical keys.
+
+COMMANDS                                                *obsidian-tools*
+:ObsidianTools                 Searchable action menu
+:ObsidianTools {action} [arg]   Invoke a workflow
+
+Actions: quick_switch, new, daily, dailies, search, tags, backlinks,
+follow_link, link, template, rename, refresh, info.
+
+Commands are buffer-local to ordinary Markdown files inside configured vaults.
+See README.md for arguments, syntax coverage, completion and template variables.
+
+RENAME                                                  *obsidian-tools-rename*
+rename takes a vault-relative path. Save the source and affected reference notes
+first. plan_rename(path) prepares before/after byte snapshots without writing;
+apply_rename(plan) validates snapshots and stages changes with error rollback.
+Note IDs and aliases remain stable. Multi-file rename is not crash-atomic.
+
+LIFECYCLE                                               *obsidian-tools-dispose*
+setup() attaches existing/future Markdown buffers without scanning the vault.
+dispose() removes owned commands and invalidates queued index/picker callbacks.
+
+vim:tw=78:ts=8:noet:ft=help:norl:
