@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "default": [
+    "unit"
+  ],
+  "defaults": {
+    "OBSIDIAN_TOOLS_MARKDOWN_PATH": "{root}/../markdown-tools.nvim"
+  },
+  "cases": [
+    {
+      "name": "runner-contracts",
+      "suite": "unit",
+      "command": [
+        "{python}",
+        "tests/runner_checks.py"
+      ],
+      "files": [
+        "tests/runner_checks.py"
+      ],
+      "timeout": 120
+    },
+    {
+      "name": "run",
+      "suite": "unit",
+      "command": [
+        "{nvim}",
+        "--headless",
+        "-u",
+        "NONE",
+        "-i",
+        "NONE",
+        "--noplugin",
+        "-n",
+        "-l",
+        "tests/run.lua"
+      ],
+      "files": [
+        "tests/run.lua"
+      ],
+      "timeout": 90
+    }
+  ],
+  "support": {
+    "tests/run.sh": "Stable shell entry point for tests/run.py"
+  },
+  "manual": {},
+  "requires": [
+    "path:$OBSIDIAN_TOOLS_MARKDOWN_PATH/lua/markdown_tools/init.lua"
+  ],
+  "fixtures": {
+    "markdown-tools.nvim": {
+      "repository": "Jacky-Lzx/markdown-tools.nvim",
+      "revision": "864395fd081390cb4dfd6d15aee79a392df19061",
+      "path": "{root}/../markdown-tools.nvim"
+    }
+  }
+}

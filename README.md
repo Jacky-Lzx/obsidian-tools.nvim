@@ -128,3 +128,5 @@ private temporary vault and cover link spans, metadata, anchors, template/daily
 creation, completions, ambiguous matches, byte-preserving rename/move, dirty and
 stale-file protection, exclusive destination collisions, injected write failures,
 rollback, cancellation and setup/disposal ownership.
+
+[Test workflow](tests/README.md): registered suites, filtering, required fixtures and retained failure evidence.
