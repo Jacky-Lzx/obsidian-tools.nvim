@@ -311,7 +311,7 @@ function M.command(args)
   end
   assert(vim.tbl_contains(actions, action), "Unknown Obsidian action: " .. action)
   if action == "info" then
-    return notify(vim.inspect(M.info()))
+    return vim.notify(vim.inspect(M.info()), vim.log.levels.INFO, { title = "Obsidian tools", filetype = "lua" })
   end
   return M[action](rest ~= "" and rest or nil)
 end
